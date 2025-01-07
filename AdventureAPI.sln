@@ -1,0 +1,11 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08F7278F-6123-4672-80BF-9D32AD92C9E5} = {4214E060-E65A-465B-9A08-B3A97C6D1A2D}
+	EndGlobalSection
+EndGlobal
