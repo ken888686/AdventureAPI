@@ -4,7 +4,7 @@ public class GetStoreByIdRequest
 {
     public const string Route = "/stores/{StoreId:Guid}";
 
-    public required Guid StoreId { get; set; }
+    public required Guid StoreId { get; init; }
 
     public static string BuildRoute(int storeId)
     {

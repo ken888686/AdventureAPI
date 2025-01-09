@@ -42,8 +42,8 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
         builder.Property(x => x.Name)
             .HasMaxLength(DataSchemaConstants.DEFAULT_STORE_NAME_LENGTH)
             .IsRequired();
-        builder.Property(x => x.Logo)
-            .HasMaxLength(DataSchemaConstants.DEFAULT_STORE_LOGO_LENGTH);
+        builder.Property(x => x.Logo);
+        builder.Property(x => x.Link);
         builder.Property(x => x.CreateTime)
             .HasColumnType("timestamp with time zone");
         builder.Property(x => x.CreateUser)
