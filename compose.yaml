@@ -1,0 +1,6 @@
+﻿services:
+  adventureapi.web:
+    image: adventureapi.web
+    build:
+      context: .
+      dockerfile: src/AdventureAPI.Web/Dockerfile
