@@ -1,6 +1,6 @@
 namespace AdventureAPI.Core.Aggregates.StoreAggregate.Specifications;
 
-public class StoreByIdSpec : Specification<Store>
+public sealed class StoreByIdSpec : Specification<Store>
 {
     public StoreByIdSpec(Guid storeId)
     {
