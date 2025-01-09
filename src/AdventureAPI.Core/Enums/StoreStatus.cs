@@ -1,8 +1,8 @@
 namespace AdventureAPI.Core.Enums;
 
-public enum StoreStatus
+public class StoreStatus(string name, int value) : SmartEnum<StoreStatus>(name, value)
 {
-    Active,
-    Inactive,
-    Pending
+    public static readonly StoreStatus Active = new(nameof(Active), 1);
+    public static readonly StoreStatus Inactive = new(nameof(Inactive), 2);
+    public static readonly StoreStatus Pending = new(nameof(Pending), 3);
 }

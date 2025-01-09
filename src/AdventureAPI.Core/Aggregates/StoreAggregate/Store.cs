@@ -16,8 +16,8 @@ public class Store(string name, string createUser, string? logo = "", string? li
     public string Name { get; private set; } = Guard.Against.NullOrEmpty(name, nameof(name));
     public Address? Address { get; private set; }
     public string Logo { get; private set; } = logo ?? string.Empty;
-    public StoreStatus Status { get; private set; } = StoreStatus.Pending;
     public string? Link { get; private set; } = link ?? string.Empty;
+    public StoreStatus Status { get; private set; } = StoreStatus.Pending;
     public DateTimeOffset CreateTime { get; init; } = DateTimeOffset.UtcNow;
     public string CreateUser { get; init; } = Guard.Against.NullOrEmpty(createUser, nameof(createUser));
     public DateTimeOffset UpdateTime { get; private set; } = DateTimeOffset.UtcNow;

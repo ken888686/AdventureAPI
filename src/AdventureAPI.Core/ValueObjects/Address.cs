@@ -24,8 +24,7 @@ public class Address(
     string? building = "",
     double lng = 0D,
     double lat = 0D
-)
-    : ValueObject
+) : ValueObject
 {
     public string PostalCode { get; } = ValidatePostalCode(postalCode);
     public string Prefecture { get; } = Guard.Against.NullOrWhiteSpace(prefecture, nameof(prefecture));

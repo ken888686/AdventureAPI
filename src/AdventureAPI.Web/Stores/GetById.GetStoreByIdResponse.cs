@@ -6,6 +6,6 @@ namespace AdventureAPI.Web.Stores;
 public class GetStoreByIdResponse(
     StoreDto store,
     string message
-) : ApiResponse<StoreDto>(store, message)
+) : ApiResponse<StoreDto>(store, StatusCodes.Status200OK, message)
 {
 }

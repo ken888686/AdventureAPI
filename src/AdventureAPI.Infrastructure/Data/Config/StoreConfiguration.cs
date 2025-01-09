@@ -1,4 +1,5 @@
 using AdventureAPI.Core.Aggregates.StoreAggregate;
+using AdventureAPI.Core.Enums;
 
 namespace AdventureAPI.Infrastructure.Data.Config;
 
@@ -44,6 +45,10 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
             .IsRequired();
         builder.Property(x => x.Logo);
         builder.Property(x => x.Link);
+        builder.Property(x => x.Status)
+            .HasConversion(
+                x => x.Value,
+                x => StoreStatus.FromValue(x));
         builder.Property(x => x.CreateTime)
             .HasColumnType("timestamp with time zone");
         builder.Property(x => x.CreateUser)

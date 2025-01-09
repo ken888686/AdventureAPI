@@ -6,7 +6,6 @@ namespace AdventureAPI.Web.Stores;
 public class CreateStoreResponse(
     StoreDto store,
     string message
-) : ApiResponse<StoreDto>(store, message)
+) : ApiResponse<StoreDto>(store, StatusCodes.Status201Created, message)
 {
-    public StoreDto Store { get; init; } = store;
 }
