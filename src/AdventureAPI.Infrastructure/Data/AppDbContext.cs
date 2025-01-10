@@ -28,7 +28,7 @@ public class AppDbContext(
         // dispatch events only if save was successful
         var entitiesWithEvents = ChangeTracker.Entries<HasDomainEventsBase>()
             .Select(e => e.Entity)
-            .Where(e => e.DomainEvents.Count.Equals(0))
+            .Where(e => e.DomainEvents.Any())
             .ToArray();
 
         await dispatcher.DispatchAndClearEvents(entitiesWithEvents);
