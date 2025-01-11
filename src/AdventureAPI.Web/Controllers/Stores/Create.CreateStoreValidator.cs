@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
 public class CreateStoreValidator : Validator<CreateStoreRequest>
 {

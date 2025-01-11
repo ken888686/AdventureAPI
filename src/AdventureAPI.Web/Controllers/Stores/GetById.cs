@@ -1,6 +1,6 @@
 using AdventureAPI.UseCases.Stores.Get;
 
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
 public class GetById(IMediator mediator)
     : Endpoint<GetStoreByIdRequest, GetStoreByIdResponse>

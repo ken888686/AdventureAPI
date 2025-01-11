@@ -1,7 +1,7 @@
 using AdventureAPI.Web.Validators;
 using FluentValidation;
 
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
 public class GetStoreValidator : Validator<GetStoreByIdRequest>
 {

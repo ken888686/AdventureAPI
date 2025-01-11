@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
 public class GetStoreByIdRequest
 {

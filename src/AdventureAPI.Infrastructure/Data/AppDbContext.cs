@@ -1,3 +1,4 @@
+using AdventureAPI.Core.Aggregates.CityAggregate;
 using AdventureAPI.Core.Aggregates.StoreAggregate;
 
 namespace AdventureAPI.Infrastructure.Data;
@@ -8,6 +9,7 @@ public class AppDbContext(
 ) : DbContext(options)
 {
     public DbSet<Store> Stores => Set<Store>();
+    public DbSet<City> Cities => Set<City>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

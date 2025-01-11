@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using AdventureAPI.Infrastructure.Data;
-using AdventureAPI.Web.Stores;
+using AdventureAPI.Web.Controllers.Stores;
 using Newtonsoft.Json;
 
 namespace AdventureAPI.FunctionalTests.ApiEndpoints.Stores;

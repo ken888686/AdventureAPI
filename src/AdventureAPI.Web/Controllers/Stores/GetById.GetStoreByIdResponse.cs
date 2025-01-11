@@ -1,7 +1,7 @@
 ﻿using AdventureAPI.UseCases.Stores;
 using AdventureAPI.Web.Responses;
 
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
 public class GetStoreByIdResponse(
     StoreDto store,

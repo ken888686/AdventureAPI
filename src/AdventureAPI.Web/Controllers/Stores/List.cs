@@ -1,8 +1,8 @@
 using AdventureAPI.UseCases.Stores.List;
 
-namespace AdventureAPI.Web.Stores;
+namespace AdventureAPI.Web.Controllers.Stores;
 
-public class List(IMediator mediator) : EndpointWithoutRequest<StoreListResponse>
+public class List(IMediator mediator) : Endpoint<StoreListRequest, StoreListResponse>
 {
     public override void Configure()
     {
@@ -10,9 +10,13 @@ public class List(IMediator mediator) : EndpointWithoutRequest<StoreListResponse
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(CancellationToken cancellationToken)
+    public override async Task HandleAsync(
+        StoreListRequest request,
+        CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new ListStoresQuery(null, null), cancellationToken);
+        var result = await mediator.Send(
+            new ListStoresQuery(request.Skip, request.Take),
+            cancellationToken);
         if (result.IsSuccess)
         {
             Response = new StoreListResponse(
