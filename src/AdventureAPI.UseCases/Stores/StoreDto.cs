@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Enums;
+using AdventureAPI.Core.Aggregates.StoreAggregate;
 using AdventureAPI.Core.ValueObjects;
 
 namespace AdventureAPI.UseCases.Stores;

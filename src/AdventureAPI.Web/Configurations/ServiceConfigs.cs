@@ -13,10 +13,6 @@ public static class ServiceConfigs
             .AddInfrastructureServices(builder.Configuration, logger)
             .AddMediatrConfigs();
 
-        // if (builder.Environment.IsDevelopment())
-        // {
-        // }
-
         logger.LogInformation("{Project} services registered", "Mediatr");
 
         return services;

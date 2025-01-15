@@ -15,9 +15,7 @@ public class List(IMediator mediator) : Endpoint<CityListRequest, CityListRespon
             });
     }
 
-    public override async Task HandleAsync(
-        CityListRequest request,
-        CancellationToken cancellationToken)
+    public override async Task HandleAsync(CityListRequest request, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(
             new ListCitiesQuery(request.Skip, request.Take),

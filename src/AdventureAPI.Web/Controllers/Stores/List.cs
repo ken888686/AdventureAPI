@@ -19,14 +19,16 @@ public class List(IMediator mediator) : Endpoint<StoreListRequest, StoreListResp
             cancellationToken);
         if (result.IsSuccess)
         {
-            Response = new StoreListResponse(
-                result.Value.Select(
-                    x => new StoreRecord(
-                        x.Id,
-                        x.Name,
-                        x.Address,
-                        x.Logo,
-                        x.Status)));
+            await SendOkAsync(
+                new StoreListResponse(
+                    result.Value.Select(
+                        x => new StoreRecord(
+                            x.Id,
+                            x.Name,
+                            x.Address,
+                            x.Logo,
+                            x.Status))),
+                cancellationToken);
         }
     }
 }

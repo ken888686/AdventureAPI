@@ -19,7 +19,9 @@ public static class MediatrConfigs
             Assembly.GetAssembly(typeof(City)),
             Assembly.GetAssembly(typeof(Store)),
             // UseCases
+            // City
             Assembly.GetAssembly(typeof(ListCitiesQuery)),
+            // Store
             Assembly.GetAssembly(typeof(CreateStoreCommand)),
             Assembly.GetAssembly(typeof(GetStoreQuery)),
             Assembly.GetAssembly(typeof(ListStoresQuery))

@@ -2,18 +2,18 @@
 
 public class StoreConstructor
 {
-    private readonly string _testName = "test name";
+    private const string TestName = "test name";
     private Store? _testStore;
 
-    public Store CreateStore()
+    private static Store CreateStore()
     {
-        return new Store(_testName, "test user");
+        return new Store(TestName, "test user");
     }
 
     [Fact]
     public void InitializesName()
     {
         _testStore = CreateStore();
-        Assert.Equal(_testName, _testStore.Name);
+        Assert.Equal(TestName, _testStore.Name);
     }
 }

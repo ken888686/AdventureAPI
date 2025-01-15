@@ -8,8 +8,8 @@ public class AppDbContext(
     IDomainEventDispatcher? dispatcher
 ) : DbContext(options)
 {
-    public DbSet<Store> Stores => Set<Store>();
     public DbSet<City> Cities => Set<City>();
+    public DbSet<Store> Stores => Set<Store>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,5 +1,4 @@
 using AdventureAPI.Core.Aggregates.StoreAggregate;
-using AdventureAPI.Core.Enums;
 
 namespace AdventureAPI.Infrastructure.Data.Config;
 

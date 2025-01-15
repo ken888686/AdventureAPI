@@ -1,3 +1,4 @@
+using System.Net;
 using AdventureAPI.Core.ValueObjects;
 using AdventureAPI.UseCases.Stores;
 using AdventureAPI.UseCases.Stores.Create;
@@ -28,8 +29,7 @@ public class Create(IMediator mediator)
                         "",
                         139.749466,
                         35.686958
-                    ),
-                    Logo = "https://xxx.png"
+                    )
                 };
             });
     }
@@ -40,13 +40,12 @@ public class Create(IMediator mediator)
             new CreateStoreCommand(
                 request.Name,
                 request.Address,
-                "Test User",
-                request.Logo),
+                "Test User"),
             cancellationToken);
 
         if (result.IsSuccess)
         {
-            Response = new CreateStoreResponse(
+            var response = new CreateStoreResponse(
                 new StoreDto(
                     result.Value.Id,
                     result.Value.Name,
@@ -54,6 +53,11 @@ public class Create(IMediator mediator)
                     result.Value.Logo,
                     result.Value.Status),
                 result.SuccessMessage);
+
+            await SendAsync(
+                response,
+                (int)HttpStatusCode.Created,
+                cancellationToken);
         }
     }
 }
