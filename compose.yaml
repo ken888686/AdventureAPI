@@ -3,4 +3,4 @@
     image: adventureapi.web
     build:
       context: .
-      dockerfile: src/AdventureAPI.Web/Dockerfile
+      dockerfile: Dockerfile
