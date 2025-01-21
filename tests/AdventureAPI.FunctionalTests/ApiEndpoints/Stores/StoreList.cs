@@ -24,9 +24,9 @@ public class StoreList(CustomWebApplicationFactory<Program> factory)
 
         // Assert
         Assert.NotNull(result);
+        Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
         Assert.Equal(2, result.Data.Count());
         Assert.Contains(result.Data, i => i.Name == SeedData.Store1.Name);
         Assert.Contains(result.Data, i => i.Name == SeedData.Store2.Name);
-        Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
     }
 }

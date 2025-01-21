@@ -12,7 +12,7 @@ public class ListStoresHandler(IRepository<Store> repository)
     {
         var spec = new StoreListSpec(request.Skip, request.Take);
         var stores = await repository.ListAsync(spec, cancellationToken);
-        return new Result<IEnumerable<StoreDto>>(
+        return Result<IEnumerable<StoreDto>>.Success(
             stores.Select(x => new StoreDto(x.Id, x.Name, x.Address, x.Logo, x.Status))
         );
     }

@@ -1,11 +1,10 @@
-﻿using AdventureAPI.UseCases.Stores;
-using AdventureAPI.Web.Responses;
+﻿using AdventureAPI.Web.Responses;
 
 namespace AdventureAPI.Web.Controllers.Stores;
 
 public class GetStoreByIdResponse(
-    StoreDto store,
-    string message
-) : ApiResponse<StoreDto>(store, StatusCodes.Status200OK, message)
+    StoreRecord store,
+    int statusCode = StatusCodes.Status200OK
+) : ApiResponse<StoreRecord>(store, statusCode)
 {
 }

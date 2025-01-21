@@ -1,4 +1,4 @@
-using System.Net;
+using AdventureAPI.Core.Aggregates.UserAggregate;
 using AdventureAPI.Core.ValueObjects;
 using AdventureAPI.UseCases.Stores;
 using AdventureAPI.UseCases.Stores.Create;
@@ -11,7 +11,7 @@ public class Create(IMediator mediator)
     public override void Configure()
     {
         Post(CreateStoreRequest.Route);
-        AllowAnonymous();
+        Roles(UserRole.SuperAdmin.ToString(), UserRole.Admin.ToString(), UserRole.ApiUser.ToString());
         Summary(
             s =>
             {
@@ -45,19 +45,24 @@ public class Create(IMediator mediator)
 
         if (result.IsSuccess)
         {
-            var response = new CreateStoreResponse(
+            Response = new CreateStoreResponse(
                 new StoreDto(
                     result.Value.Id,
                     result.Value.Name,
                     result.Value.Address,
                     result.Value.Logo,
-                    result.Value.Status),
-                result.SuccessMessage);
-
-            await SendAsync(
-                response,
-                (int)HttpStatusCode.Created,
-                cancellationToken);
+                    result.Value.Status));
+            return;
         }
+
+        Response = result.Status switch
+        {
+            ResultStatus.NotFound => new CreateStoreResponse(null, StatusCodes.Status404NotFound, result.Errors),
+            ResultStatus.Invalid => new CreateStoreResponse(
+                null,
+                StatusCodes.Status400BadRequest,
+                result.ValidationErrors.Select(x => x.ErrorMessage)),
+            _ => new CreateStoreResponse(null, StatusCodes.Status500InternalServerError, result.Errors)
+        };
     }
 }

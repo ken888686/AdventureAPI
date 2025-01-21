@@ -18,7 +18,10 @@ public static class MiddlewareConfig
             app.UseHsts();
         }
 
-        app.UseFastEndpoints()
+        app
+            .UseAuthentication()
+            .UseAuthorization()
+            .UseFastEndpoints()
             .UseSwaggerGen();
 
         // Note this will drop Authorization headers

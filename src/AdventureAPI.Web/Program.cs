@@ -1,4 +1,5 @@
 using AdventureAPI.Web.Configurations;
+using FastEndpoints.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,20 @@ var appLogger = new SerilogLoggerFactory(logger)
 builder.Services.AddOptionConfigs(builder.Configuration, appLogger, builder);
 builder.Services.AddServiceConfigs(appLogger, builder);
 
-builder.Services.AddFastEndpoints()
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+builder.Services
+    .AddAuthenticationJwtBearer(
+        s =>
+        {
+            s.SigningKey = jwtSettings["SigningKey"];
+        },
+        b =>
+        {
+            b.TokenValidationParameters.ValidIssuer = jwtSettings["Issuer"];
+            b.TokenValidationParameters.ValidAudience = jwtSettings["Audience"];
+        })
+    .AddAuthorization()
+    .AddFastEndpoints()
     .SwaggerDocument(o => { o.ShortSchemaNames = true; });
 
 var app = builder.Build();

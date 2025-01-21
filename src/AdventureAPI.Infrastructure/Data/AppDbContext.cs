@@ -1,5 +1,6 @@
 using AdventureAPI.Core.Aggregates.CityAggregate;
 using AdventureAPI.Core.Aggregates.StoreAggregate;
+using AdventureAPI.Core.Aggregates.UserAggregate;
 
 namespace AdventureAPI.Infrastructure.Data;
 
@@ -10,6 +11,7 @@ public class AppDbContext(
 {
     public DbSet<City> Cities => Set<City>();
     public DbSet<Store> Stores => Set<Store>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

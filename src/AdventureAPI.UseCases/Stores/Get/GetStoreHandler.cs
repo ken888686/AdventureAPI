@@ -16,6 +16,11 @@ public class GetStoreHandler(IReadRepository<Store> repository)
         }
 
         return Result<StoreDto>.Success(
-            new StoreDto(entity.Id, entity.Name, entity.Address, entity.Logo, entity.Status));
+            new StoreDto(
+                entity.Id,
+                entity.Name,
+                entity.Address,
+                entity.Logo,
+                entity.Status));
     }
 }

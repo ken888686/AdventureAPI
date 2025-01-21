@@ -1,4 +1,6 @@
+using AdventureAPI.Core.Interfaces;
 using AdventureAPI.Infrastructure.Data;
+using AdventureAPI.Infrastructure.Services;
 
 namespace AdventureAPI.Infrastructure;
 
@@ -12,9 +14,24 @@ public static class InfrastructureServiceExtensions
         var connectionString = Guard.Against.NullOrEmpty(config.GetConnectionString("DefaultConnection"));
         services.AddApplicationDbContext(connectionString);
 
+        // JWT Create
+        var jwtSettings = config.GetSection("JwtSettings");
+        var jwtSigningKey = Guard.Against.NullOrEmpty(jwtSettings["SigningKey"]);
+        var jwtIssuer = Guard.Against.NullOrEmpty(jwtSettings["Issuer"]);
+        var jwtAudience = Guard.Against.NullOrEmpty(jwtSettings["Audience"]);
+        services.Configure<JwtCreationOptions>(
+            options =>
+            {
+                options.SigningKey = jwtSigningKey;
+                options.Issuer = jwtIssuer;
+                options.Audience = jwtAudience;
+            });
+
         services
             .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
-            .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
+            .AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>))
+            .AddScoped<IJwtTokenGenerator, JwtTokenGenerator>()
+            .AddScoped<IPasswordService, PasswordService>();
 
         logger.LogInformation("{Project} services registered", "Infrastructure");
 

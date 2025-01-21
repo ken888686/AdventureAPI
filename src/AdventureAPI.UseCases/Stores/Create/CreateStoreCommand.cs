@@ -1,4 +1,3 @@
-using AdventureAPI.Core.Aggregates.StoreAggregate;
 using AdventureAPI.Core.ValueObjects;
 
 namespace AdventureAPI.UseCases.Stores.Create;
@@ -8,4 +7,4 @@ public record CreateStoreCommand(
     Address Address,
     string CreateUser,
     string? Logo = ""
-) : ICommand<Result<Store>>;
+) : ICommand<Result<StoreDto>>;

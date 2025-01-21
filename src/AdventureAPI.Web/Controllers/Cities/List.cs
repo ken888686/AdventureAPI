@@ -27,6 +27,9 @@ public class List(IMediator mediator) : Endpoint<CityListRequest, CityListRespon
                     x => new CityRecord(x.Id, x.Name)
                 )
             );
+            return;
         }
+
+        Response = new CityListResponse(new List<CityRecord>());
     }
 }

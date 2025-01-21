@@ -15,7 +15,7 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
     private readonly Fixture _fixture = new();
 
     [Fact]
-    public async Task StoreCreate_WithValidParameters_CreatesStore()
+    public async Task StoreCreate_WithValidParametersAndWithToken_CreatesStore()
     {
         // Arrange
         var store = new CreateStoreRequest
@@ -41,8 +41,36 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        Assert.NotNull(result.Data);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal((int)HttpStatusCode.Created, result.StatusCode);
         Assert.Equal(store.Name, result.Data.Name);
         Assert.Equivalent(store.Address, result.Data.Address);
+    }
+
+    [Fact]
+    public async Task StoreCreate_WithValidParametersAndWithoutToken_Returns401Unauthorized()
+    {
+        // Arrange
+        var store = new CreateStoreRequest
+        {
+            Name = _fixture.Create<string>(),
+            Address = new Address(
+                "100-0005",
+                "Tokyo",
+                "Chiyoda",
+                "Marunouchi",
+                "1 Chome",
+                "",
+                "",
+                139.749466,
+                35.686958)
+        };
+
+        // Act
+        var response = await _client.PostAsJsonAsync("/stores", store);
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 }

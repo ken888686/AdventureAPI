@@ -28,4 +28,23 @@ public class CityList(CustomWebApplicationFactory<Program> factory)
         Assert.Contains(result.Data, i => i.Name == SeedData.City2.Name);
         Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
     }
+
+    [Fact]
+    public async Task CitiesList_WithSkip10AndTake10_ReturnsEmptyListWithOkResponse()
+    {
+        // Arrange
+        const int skip = 10;
+        const int take = 10;
+
+        // Act
+        var response = await _client.GetAsync($"/cities?skip={skip}&take={take}");
+        response.EnsureSuccessStatusCode();
+        var jsonString = await response.Content.ReadAsStringAsync();
+        var result = JsonConvert.DeserializeObject<CityListResponse>(jsonString);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Empty(result.Data);
+        Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
+    }
 }

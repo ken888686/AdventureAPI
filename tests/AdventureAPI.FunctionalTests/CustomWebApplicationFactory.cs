@@ -1,4 +1,5 @@
-﻿using AdventureAPI.Infrastructure.Data;
+﻿using AdventureAPI.Core.Interfaces;
+using AdventureAPI.Infrastructure.Data;
 using Testcontainers.PostgreSql;
 
 namespace AdventureAPI.FunctionalTests;
@@ -15,7 +16,8 @@ public class CustomWebApplicationFactory<TProgram>
         using var scope = Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         await dbContext.Database.EnsureCreatedAsync();
-        await SeedData.InitializeAsync(dbContext);
+        var passwordService = scope.ServiceProvider.GetRequiredService<IPasswordService>();
+        await SeedData.InitializeAsync(dbContext, passwordService);
     }
 
     public new async Task DisposeAsync()
