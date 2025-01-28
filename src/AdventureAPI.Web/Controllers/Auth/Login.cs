@@ -2,13 +2,17 @@ using AdventureAPI.UseCases.Auth.Login;
 
 namespace AdventureAPI.Web.Controllers.Auth;
 
-public class Login(IMediator mediator)
-    : Endpoint<LoginRequest, LoginResponse>
+public class Login(IMediator mediator) : Endpoint<LoginRequest, LoginResponse>
 {
     public override void Configure()
     {
         Post(LoginRequest.Route);
         AllowAnonymous();
+        Summary(
+            s =>
+            {
+                s.ExampleRequest = new LoginRequest { Username = "your-username", Password = "your-password" };
+            });
     }
 
     public override async Task HandleAsync(LoginRequest request, CancellationToken cancellationToken)

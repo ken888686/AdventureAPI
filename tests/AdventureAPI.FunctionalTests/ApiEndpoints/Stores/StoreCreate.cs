@@ -1,4 +1,5 @@
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using AdventureAPI.Core.ValueObjects;
 using AdventureAPI.Web.Controllers.Stores;
@@ -13,6 +14,9 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
 {
     private readonly HttpClient _client = factory.CreateClient();
     private readonly Fixture _fixture = new();
+
+    private readonly string _token =
+        "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxLyIsImlzcyI6IkZ1bmN0aW9uYWxUZXN0cyIsImV4cCI6MTczNzQzNTQ1NCwiaWF0IjoxNzM3NDM1NDU0LCJVc2VyTmFtZSI6Imtlbjg4ODY4NiIsIlVzZXJJZCI6IjAxOTQ4NzM5LTE3NmMtNzBhMy1iZGJhLTAwN2Y2NzFlMTlkNCIsInJvbGUiOiJVc2VyIiwibmJmIjoxNzM3NDM1NDU0fQ.I_ADNjKlDmv_FazOMZnxzzjaP3NjQvZT-k_bvnLZwms";
 
     [Fact]
     public async Task StoreCreate_WithValidParametersAndWithToken_CreatesStore()
@@ -32,6 +36,7 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
                 139.749466,
                 35.686958)
         };
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
         // Act
         var response = await _client.PostAsJsonAsync("/stores", store);

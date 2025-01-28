@@ -17,6 +17,7 @@ public class User(
     public byte[] Salt { get; private set; } = Guard.Against.Null(salt, nameof(salt));
     public string FirstName { get; private set; } = Guard.Against.NullOrEmpty(firstName, nameof(firstName));
     public string LastName { get; private set; } = Guard.Against.NullOrEmpty(lastName, nameof(lastName));
+    public string? PhotoUrl { get; private set; }
     public Address? Address { get; private set; }
     public UserRole UserRole { get; private set; } = UserRole.User;
     public UserStatus Status { get; private set; } = UserStatus.Inactive;
@@ -25,11 +26,12 @@ public class User(
     public DateTimeOffset UpdateTime { get; private set; } = DateTimeOffset.UtcNow;
     public string UpdateUser { get; private set; } = Guard.Against.NullOrEmpty(username, nameof(username));
 
-    public void UpdateProfile(string firstName, string lastName, Address? address)
+    public void UpdateProfile(string firstName, string lastName, Address? address, string? photoUrl)
     {
         FirstName = Guard.Against.NullOrEmpty(firstName, nameof(firstName));
         LastName = Guard.Against.NullOrEmpty(lastName, nameof(lastName));
         Address = address;
+        PhotoUrl = photoUrl;
         UpdateTime = DateTimeOffset.UtcNow;
     }
 

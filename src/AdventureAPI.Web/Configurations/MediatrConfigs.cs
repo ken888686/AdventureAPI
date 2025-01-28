@@ -8,6 +8,7 @@ using AdventureAPI.UseCases.Cities.List;
 using AdventureAPI.UseCases.Stores.Create;
 using AdventureAPI.UseCases.Stores.Get;
 using AdventureAPI.UseCases.Stores.List;
+using AdventureAPI.UseCases.Users.Get;
 using Ardalis.SharedKernel;
 
 namespace AdventureAPI.Web.Configurations;
@@ -31,7 +32,9 @@ public static class MediatrConfigs
             // Store
             Assembly.GetAssembly(typeof(CreateStoreCommand)),
             Assembly.GetAssembly(typeof(GetStoreQuery)),
-            Assembly.GetAssembly(typeof(ListStoresQuery))
+            Assembly.GetAssembly(typeof(ListStoresQuery)),
+            // Users
+            Assembly.GetAssembly(typeof(GetUserInfoQuery))
         };
 
         services

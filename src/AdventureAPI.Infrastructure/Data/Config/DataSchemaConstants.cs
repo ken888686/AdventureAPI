@@ -4,4 +4,5 @@ public static class DataSchemaConstants
 {
     public const int DEFAULT_USER_NAME_LENGTH = 50;
     public const int DEFAULT_STORE_NAME_LENGTH = 255;
+    public const int DEFAULT_CITY_NAME_LENGTH = 255;
 }

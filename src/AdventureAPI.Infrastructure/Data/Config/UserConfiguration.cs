@@ -51,6 +51,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired();
         builder.Property(x => x.LastName)
             .IsRequired();
+        builder.Property(x => x.PhotoUrl);
         builder.Property(x => x.Status)
             .HasConversion(
                 x => x.Value,

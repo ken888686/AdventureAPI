@@ -39,5 +39,10 @@ public class CustomWebApplicationFactory<TProgram>
 
         // Replace connection string with testContainers
         builder.UseSetting("ConnectionStrings:DefaultConnection", _postgresContainer.GetConnectionString());
+
+        // JWT settings
+        builder.UseSetting("JwtSettings:SigningKey", "soIG4qu3HUGohHAspYT/CpXA93FYVz9s7JaXZwdEaZs=");
+        builder.UseSetting("JwtSettings:Issuer", "FunctionalTests");
+        builder.UseSetting("JwtSettings:Audience", "https://localhost:5001/");
     }
 }
