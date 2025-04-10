@@ -34,12 +34,12 @@ public class Address(
     public string Number { get; } = number ?? string.Empty;
     public string Building { get; } = building ?? string.Empty;
     public double Lng { get; } = ValidateLongitude(lng);
-    public double Lat { get; } = ValidateLongitude(lat);
+    public double Lat { get; } = ValidateLatitude(lat);
 
     public Address UpdateCoordinates(double longitude, double latitude)
     {
         ValidateLongitude(lng);
-        ValidateLongitude(lat);
+        ValidateLatitude(lat);
         return new Address(PostalCode, Prefecture, City, Ward, Block, Number, Building, longitude, latitude);
     }
 

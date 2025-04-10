@@ -19,7 +19,7 @@ public static class SeedData
         await PopulateTestDataAsync(dbContext, passwordService);
     }
 
-    public static async Task PopulateTestDataAsync(
+    private static async Task PopulateTestDataAsync(
         AppDbContext dbContext,
         IPasswordService passwordService)
     {
@@ -45,7 +45,15 @@ public static class SeedData
             salt,
             "Annabelle",
             "Kan");
-        dbContext.Users.AddRange(user1, user2);
+        var admin = new User(
+            "admin",
+            "admin@admin.com",
+            passwordHash,
+            salt,
+            "AdminFirstName",
+            "AdminLastName");
+        admin.UpdateRole(UserRole.Admin);
+        dbContext.Users.AddRange(admin, user1, user2);
 
         // Save
         await dbContext.SaveChangesAsync();

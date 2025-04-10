@@ -19,12 +19,14 @@ public static class InfrastructureServiceExtensions
         var jwtSigningKey = Guard.Against.NullOrEmpty(jwtSettings["SigningKey"]);
         var jwtIssuer = Guard.Against.NullOrEmpty(jwtSettings["Issuer"]);
         var jwtAudience = Guard.Against.NullOrEmpty(jwtSettings["Audience"]);
+        var jwtExpireDays = int.Parse(Guard.Against.NullOrEmpty(jwtSettings["ExpireDays"]));
         services.Configure<JwtCreationOptions>(
             options =>
             {
                 options.SigningKey = jwtSigningKey;
                 options.Issuer = jwtIssuer;
                 options.Audience = jwtAudience;
+                options.ExpireAt = DateTime.UtcNow.AddDays(jwtExpireDays);
             });
 
         services
