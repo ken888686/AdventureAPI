@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Controllers.Stores;
+﻿namespace AdventureAPI.Web.Controllers.Stores;
 
 public class StoreListRequest
 {

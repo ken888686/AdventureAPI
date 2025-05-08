@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.StoreAggregate;
+﻿namespace AdventureAPI.Core.Aggregates.StoreAggregate;
 
 public class StoreStatus(string name, int value) : SmartEnum<StoreStatus>(name, value)
 {

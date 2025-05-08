@@ -1,4 +1,4 @@
-using AdventureAPI.UseCases.Auth.Login;
+﻿using AdventureAPI.UseCases.Auth.Login;
 
 namespace AdventureAPI.Web.Controllers.Auth;
 
@@ -8,18 +8,25 @@ public class Login(IMediator mediator) : Endpoint<LoginRequest, LoginResponse>
     {
         Post(LoginRequest.Route);
         AllowAnonymous();
-        Summary(
-            s =>
+        Summary(s =>
+        {
+            s.ExampleRequest = new LoginRequest
             {
-                s.ExampleRequest = new LoginRequest { Username = "your-username", Password = "your-password" };
-            });
+                Username = "your-username",
+                Password = "your-password",
+            };
+        });
     }
 
-    public override async Task HandleAsync(LoginRequest request, CancellationToken cancellationToken)
+    public override async Task HandleAsync(
+        LoginRequest request,
+        CancellationToken cancellationToken
+    )
     {
         var result = await mediator.Send(
             new LoginCommand(request.Username, request.Password),
-            cancellationToken);
+            cancellationToken
+        );
 
         if (result.IsSuccess)
         {
@@ -29,12 +36,21 @@ public class Login(IMediator mediator) : Endpoint<LoginRequest, LoginResponse>
 
         Response = result.Status switch
         {
-            ResultStatus.NotFound => new LoginResponse(string.Empty, StatusCodes.Status404NotFound, result.Errors),
+            ResultStatus.NotFound => new LoginResponse(
+                string.Empty,
+                StatusCodes.Status404NotFound,
+                result.Errors
+            ),
             ResultStatus.Invalid => new LoginResponse(
                 string.Empty,
                 StatusCodes.Status400BadRequest,
-                result.ValidationErrors.Select(x => x.ErrorMessage)),
-            _ => new LoginResponse(string.Empty, StatusCodes.Status500InternalServerError, result.Errors)
+                result.ValidationErrors.Select(x => x.ErrorMessage)
+            ),
+            _ => new LoginResponse(
+                string.Empty,
+                StatusCodes.Status500InternalServerError,
+                result.Errors
+            ),
         };
     }
 }

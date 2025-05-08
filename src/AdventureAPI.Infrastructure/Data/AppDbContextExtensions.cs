@@ -1,4 +1,4 @@
-namespace AdventureAPI.Infrastructure.Data;
+﻿namespace AdventureAPI.Infrastructure.Data;
 
 public static class AppDbContextExtensions
 {

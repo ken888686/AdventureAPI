@@ -1,4 +1,4 @@
-namespace AdventureAPI.UseCases.Auth.Login;
+﻿namespace AdventureAPI.UseCases.Auth.Login;
 
 public record LoginCommand(
     string Username,

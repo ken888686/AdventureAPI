@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.CityAggregate;
+﻿namespace AdventureAPI.Core.Aggregates.CityAggregate;
 
 public class City(string name, string createUser) : EntityBase<Guid>, IAggregateRoot
 {

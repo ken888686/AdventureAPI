@@ -1,4 +1,4 @@
-using AdventureAPI.Web.Validators;
+﻿using AdventureAPI.Web.Validators;
 using FluentValidation;
 
 namespace AdventureAPI.Web.Controllers.Stores;

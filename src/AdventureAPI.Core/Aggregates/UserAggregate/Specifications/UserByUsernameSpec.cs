@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.UserAggregate.Specifications;
+﻿namespace AdventureAPI.Core.Aggregates.UserAggregate.Specifications;
 
 public sealed class UserByUsernameSpec : Specification<User>
 {

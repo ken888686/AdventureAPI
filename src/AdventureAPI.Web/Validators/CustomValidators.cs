@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Validators;
+﻿namespace AdventureAPI.Web.Validators;
 
 public static class CustomValidators
 {

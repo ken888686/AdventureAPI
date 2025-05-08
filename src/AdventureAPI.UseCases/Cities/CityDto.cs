@@ -1,4 +1,4 @@
-namespace AdventureAPI.UseCases.Cities;
+﻿namespace AdventureAPI.UseCases.Cities;
 
 public record CityDto(
     Guid Id,

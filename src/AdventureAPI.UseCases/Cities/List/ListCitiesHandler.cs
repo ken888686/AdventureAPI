@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Aggregates.CityAggregate;
+﻿using AdventureAPI.Core.Aggregates.CityAggregate;
 using AdventureAPI.Core.Aggregates.CityAggregate.Specifications;
 
 namespace AdventureAPI.UseCases.Cities.List;

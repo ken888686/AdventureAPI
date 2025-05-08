@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Configurations;
+﻿namespace AdventureAPI.Web.Configurations;
 
 public static class LoggerConfigs
 {

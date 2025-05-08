@@ -1,4 +1,4 @@
-using Ardalis.ListStartupServices;
+﻿using Ardalis.ListStartupServices;
 
 namespace AdventureAPI.Web.Configurations;
 

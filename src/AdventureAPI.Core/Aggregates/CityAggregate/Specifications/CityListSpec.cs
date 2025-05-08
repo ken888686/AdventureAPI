@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Constants;
+﻿using AdventureAPI.Core.Constants;
 
 namespace AdventureAPI.Core.Aggregates.CityAggregate.Specifications;
 

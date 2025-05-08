@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Constants;
+﻿namespace AdventureAPI.Core.Constants;
 
 public class Pagination
 {

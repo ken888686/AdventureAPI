@@ -1,4 +1,4 @@
-namespace AdventureAPI.Infrastructure.Data.Config;
+﻿namespace AdventureAPI.Infrastructure.Data.Config;
 
 public static class DataSchemaConstants
 {

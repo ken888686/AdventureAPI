@@ -1,4 +1,4 @@
-using AdventureAPI.UseCases.Stores;
+﻿using AdventureAPI.UseCases.Stores;
 using AdventureAPI.Web.Responses;
 
 namespace AdventureAPI.Web.Controllers.Stores;

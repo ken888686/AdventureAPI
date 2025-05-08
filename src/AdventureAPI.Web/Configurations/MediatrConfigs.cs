@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using AdventureAPI.Core.Aggregates.CityAggregate;
 using AdventureAPI.Core.Aggregates.StoreAggregate;
 using AdventureAPI.Core.Aggregates.UserAggregate;

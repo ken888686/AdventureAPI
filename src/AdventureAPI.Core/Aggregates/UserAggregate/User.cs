@@ -1,4 +1,4 @@
-using AdventureAPI.Core.ValueObjects;
+﻿using AdventureAPI.Core.ValueObjects;
 
 namespace AdventureAPI.Core.Aggregates.UserAggregate;
 
@@ -11,12 +11,16 @@ public class User(
     string lastName
 ) : EntityBase<Guid>, IAggregateRoot
 {
-    public string Username { get; private set; } = Guard.Against.NullOrEmpty(username, nameof(username));
+    public string Username { get; private set; } =
+        Guard.Against.NullOrEmpty(username, nameof(username));
     public string Email { get; private set; } = Guard.Against.NullOrEmpty(email, nameof(email));
-    public string PasswordHash { get; private set; } = Guard.Against.NullOrEmpty(passwordHash, nameof(passwordHash));
+    public string PasswordHash { get; private set; } =
+        Guard.Against.NullOrEmpty(passwordHash, nameof(passwordHash));
     public byte[] Salt { get; private set; } = Guard.Against.Null(salt, nameof(salt));
-    public string FirstName { get; private set; } = Guard.Against.NullOrEmpty(firstName, nameof(firstName));
-    public string LastName { get; private set; } = Guard.Against.NullOrEmpty(lastName, nameof(lastName));
+    public string FirstName { get; private set; } =
+        Guard.Against.NullOrEmpty(firstName, nameof(firstName));
+    public string LastName { get; private set; } =
+        Guard.Against.NullOrEmpty(lastName, nameof(lastName));
     public string? PhotoUrl { get; private set; }
     public Address? Address { get; private set; }
     public UserRole UserRole { get; private set; } = UserRole.User;
@@ -24,7 +28,8 @@ public class User(
     public DateTimeOffset CreateTime { get; init; } = DateTimeOffset.UtcNow;
     public string CreateUser { get; init; } = Guard.Against.NullOrEmpty(username, nameof(username));
     public DateTimeOffset UpdateTime { get; private set; } = DateTimeOffset.UtcNow;
-    public string UpdateUser { get; private set; } = Guard.Against.NullOrEmpty(username, nameof(username));
+    public string UpdateUser { get; private set; } =
+        Guard.Against.NullOrEmpty(username, nameof(username));
 
     public void UpdateProfile(string firstName, string lastName, Address? address, string? photoUrl)
     {

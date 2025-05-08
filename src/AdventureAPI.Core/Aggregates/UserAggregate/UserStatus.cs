@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.UserAggregate;
+﻿namespace AdventureAPI.Core.Aggregates.UserAggregate;
 
 public class UserStatus(string name, int value) : SmartEnum<UserStatus>(name, value)
 {

@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.StoreAggregate.Specifications;
+﻿namespace AdventureAPI.Core.Aggregates.StoreAggregate.Specifications;
 
 public sealed class StoreByIdSpec : Specification<Store>
 {

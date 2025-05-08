@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Aggregates.StoreAggregate;
+﻿using AdventureAPI.Core.Aggregates.StoreAggregate;
 
 namespace AdventureAPI.Infrastructure.Data.Config;
 

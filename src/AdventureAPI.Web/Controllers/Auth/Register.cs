@@ -2,8 +2,7 @@
 
 namespace AdventureAPI.Web.Controllers.Auth;
 
-public class Register(IMediator mediator)
-    : Endpoint<RegisterRequest, RegisterResponse>
+public class Register(IMediator mediator) : Endpoint<RegisterRequest, RegisterResponse>
 {
     public override void Configure()
     {
@@ -11,11 +10,21 @@ public class Register(IMediator mediator)
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(RegisterRequest request, CancellationToken cancellationToken)
+    public override async Task HandleAsync(
+        RegisterRequest request,
+        CancellationToken cancellationToken
+    )
     {
         var result = await mediator.Send(
-            new RegisterCommand(request.Username, request.Email, request.Password, request.FirstName, request.LastName),
-            cancellationToken);
+            new RegisterCommand(
+                request.Username,
+                request.Email,
+                request.Password,
+                request.FirstName,
+                request.LastName
+            ),
+            cancellationToken
+        );
 
         if (result.IsSuccess)
         {

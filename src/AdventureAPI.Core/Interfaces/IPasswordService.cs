@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Interfaces;
+﻿namespace AdventureAPI.Core.Interfaces;
 
 public interface IPasswordService
 {

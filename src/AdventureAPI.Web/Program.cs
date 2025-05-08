@@ -1,4 +1,4 @@
-using AdventureAPI.Web.Configurations;
+﻿using AdventureAPI.Web.Configurations;
 using FastEndpoints.Security;
 
 var builder = WebApplication.CreateBuilder(args);

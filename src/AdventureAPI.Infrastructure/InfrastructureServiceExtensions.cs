@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Interfaces;
+﻿using AdventureAPI.Core.Interfaces;
 using AdventureAPI.Infrastructure.Data;
 using AdventureAPI.Infrastructure.Services;
 

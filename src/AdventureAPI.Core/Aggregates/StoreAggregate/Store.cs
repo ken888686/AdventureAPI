@@ -1,4 +1,4 @@
-using AdventureAPI.Core.ValueObjects;
+﻿using AdventureAPI.Core.ValueObjects;
 
 namespace AdventureAPI.Core.Aggregates.StoreAggregate;
 
@@ -10,7 +10,8 @@ namespace AdventureAPI.Core.Aggregates.StoreAggregate;
 /// <param name="logo">Logo url</param>
 /// <param name="link">Store url</param>
 public class Store(string name, string createUser, string? logo = "", string? link = "")
-    : EntityBase<Guid>, IAggregateRoot
+    : EntityBase<Guid>,
+        IAggregateRoot
 {
     public string Name { get; private set; } = Guard.Against.NullOrEmpty(name, nameof(name));
     public Address? Address { get; private set; }
@@ -18,9 +19,11 @@ public class Store(string name, string createUser, string? logo = "", string? li
     public string? Link { get; private set; } = link ?? string.Empty;
     public StoreStatus Status { get; private set; } = StoreStatus.Pending;
     public DateTimeOffset CreateTime { get; init; } = DateTimeOffset.UtcNow;
-    public string CreateUser { get; init; } = Guard.Against.NullOrEmpty(createUser, nameof(createUser));
+    public string CreateUser { get; init; } =
+        Guard.Against.NullOrEmpty(createUser, nameof(createUser));
     public DateTimeOffset UpdateTime { get; private set; } = DateTimeOffset.UtcNow;
-    public string UpdateUser { get; private set; } = Guard.Against.NullOrEmpty(createUser, nameof(createUser));
+    public string UpdateUser { get; private set; } =
+        Guard.Against.NullOrEmpty(createUser, nameof(createUser));
 
     /// <summary>
     ///     Update store's name

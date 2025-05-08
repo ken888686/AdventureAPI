@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Aggregates.UserAggregate;
+﻿using AdventureAPI.Core.Aggregates.UserAggregate;
 using AdventureAPI.Core.Aggregates.UserAggregate.Specifications;
 using AdventureAPI.Core.Interfaces;
 

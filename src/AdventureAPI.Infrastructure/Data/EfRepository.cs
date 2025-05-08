@@ -1,4 +1,4 @@
-namespace AdventureAPI.Infrastructure.Data;
+﻿namespace AdventureAPI.Infrastructure.Data;
 
 public class EfRepository<T>(AppDbContext dbContext)
     : RepositoryBase<T>(dbContext), IReadRepository<T>, IRepository<T>

@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Json;
 using AdventureAPI.Web.Controllers.Auth;
 using AutoFixture;

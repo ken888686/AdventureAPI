@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Aggregates.StoreAggregate;
+﻿using AdventureAPI.Core.Aggregates.StoreAggregate;
 using AdventureAPI.Core.Aggregates.StoreAggregate.Specifications;
 
 namespace AdventureAPI.UseCases.Stores.Create;

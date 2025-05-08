@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Controllers.Cities;
+﻿namespace AdventureAPI.Web.Controllers.Cities;
 
 public class CityListRequest
 {

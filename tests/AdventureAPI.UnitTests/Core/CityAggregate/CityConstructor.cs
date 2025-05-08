@@ -1,4 +1,4 @@
-using AdventureAPI.Core.Aggregates.CityAggregate;
+﻿using AdventureAPI.Core.Aggregates.CityAggregate;
 
 namespace AdventureAPI.UnitTests.Core.CityAggregate;
 

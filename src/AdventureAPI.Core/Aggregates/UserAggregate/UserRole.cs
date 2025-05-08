@@ -1,4 +1,4 @@
-namespace AdventureAPI.Core.Aggregates.UserAggregate;
+﻿namespace AdventureAPI.Core.Aggregates.UserAggregate;
 
 /// <summary>
 ///     Represents the various roles a user can have in the application.
@@ -84,5 +84,5 @@ public enum UserRole
     ///         May have specific permissions tailored for API interactions.
     ///     </para>
     /// </summary>
-    ApiUser
+    ApiUser,
 }

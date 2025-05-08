@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventureAPI.Core.ValueObjects;
 
@@ -27,7 +27,8 @@ public class Address(
 ) : ValueObject
 {
     public string PostalCode { get; } = ValidatePostalCode(postalCode);
-    public string Prefecture { get; } = Guard.Against.NullOrWhiteSpace(prefecture, nameof(prefecture));
+    public string Prefecture { get; } =
+        Guard.Against.NullOrWhiteSpace(prefecture, nameof(prefecture));
     public string City { get; } = Guard.Against.NullOrWhiteSpace(city, nameof(city));
     public string Ward { get; } = Guard.Against.NullOrWhiteSpace(ward, nameof(ward));
     public string Block { get; } = Guard.Against.NullOrWhiteSpace(block, nameof(block));
@@ -40,7 +41,17 @@ public class Address(
     {
         ValidateLongitude(lng);
         ValidateLatitude(lat);
-        return new Address(PostalCode, Prefecture, City, Ward, Block, Number, Building, longitude, latitude);
+        return new Address(
+            PostalCode,
+            Prefecture,
+            City,
+            Ward,
+            Block,
+            Number,
+            Building,
+            longitude,
+            latitude
+        );
     }
 
     public override string ToString()
@@ -62,7 +73,10 @@ public class Address(
         var regex = new Regex(@"^\d{3}-\d{4}$");
         if (!regex.IsMatch(postalCode))
         {
-            throw new ArgumentException("Invalid postal code format. Use XXX-XXXX format.", nameof(postalCode));
+            throw new ArgumentException(
+                "Invalid postal code format. Use XXX-XXXX format.",
+                nameof(postalCode)
+            );
         }
 
         return postalCode;

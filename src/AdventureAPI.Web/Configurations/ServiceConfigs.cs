@@ -1,4 +1,4 @@
-using AdventureAPI.Infrastructure;
+﻿using AdventureAPI.Infrastructure;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace AdventureAPI.Web.Configurations;

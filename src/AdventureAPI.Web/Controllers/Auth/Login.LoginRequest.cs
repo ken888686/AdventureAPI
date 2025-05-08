@@ -1,4 +1,4 @@
-namespace AdventureAPI.Web.Controllers.Auth;
+﻿namespace AdventureAPI.Web.Controllers.Auth;
 
 public class LoginRequest
 {
