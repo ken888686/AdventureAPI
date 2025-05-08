@@ -47,7 +47,7 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
                 "",
                 139.749466,
                 35.686958
-            )
+            ),
         };
 
         // Act
@@ -83,7 +83,7 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
                 "",
                 139.749466,
                 35.686958
-            )
+            ),
         };
 
         // Act
@@ -97,7 +97,8 @@ public class StoreCreate(CustomWebApplicationFactory<Program> factory)
     {
         var loginResponse = await _client.PostAsJsonAsync(
             "/auth/login",
-            new { username, password });
+            new { username, password }
+        );
         loginResponse.EnsureSuccessStatusCode();
         var jsonString = await loginResponse.Content.ReadAsStringAsync();
         Assert.NotNull(jsonString);

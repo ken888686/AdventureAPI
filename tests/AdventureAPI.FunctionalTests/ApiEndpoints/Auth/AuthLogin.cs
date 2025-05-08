@@ -44,9 +44,7 @@ public class AuthLogin(CustomWebApplicationFactory<Program> factory)
         const string password = "test";
 
         // Act
-        var response = await _client.PostAsJsonAsync(
-            "/auth/login",
-            new { username, password });
+        var response = await _client.PostAsJsonAsync("/auth/login", new { username, password });
         response.EnsureSuccessStatusCode();
         var jsonString = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<LoginResponse>(jsonString);
@@ -65,9 +63,7 @@ public class AuthLogin(CustomWebApplicationFactory<Program> factory)
         const string password = "nope";
 
         // Act
-        var response = await _client.PostAsJsonAsync(
-            "/auth/login",
-            new { username, password });
+        var response = await _client.PostAsJsonAsync("/auth/login", new { username, password });
         response.EnsureSuccessStatusCode();
         var jsonString = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<LoginResponse>(jsonString);

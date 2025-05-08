@@ -12,15 +12,14 @@ logger.Information("Starting web host");
 
 builder.AddLoggerConfigs();
 
-var appLogger = new SerilogLoggerFactory(logger)
-    .CreateLogger<Program>();
+var appLogger = new SerilogLoggerFactory(logger).CreateLogger<Program>();
 
 builder.Services.AddOptionConfigs(builder.Configuration, appLogger, builder);
 builder.Services.AddServiceConfigs(appLogger, builder);
 
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-builder.Services
-    .AddAuthenticationJwtBearer(
+builder
+    .Services.AddAuthenticationJwtBearer(
         s =>
         {
             s.SigningKey = jwtSettings["SigningKey"];
@@ -29,10 +28,14 @@ builder.Services
         {
             b.TokenValidationParameters.ValidIssuer = jwtSettings["Issuer"];
             b.TokenValidationParameters.ValidAudience = jwtSettings["Audience"];
-        })
+        }
+    )
     .AddAuthorization()
     .AddFastEndpoints()
-    .SwaggerDocument(o => { o.ShortSchemaNames = true; });
+    .SwaggerDocument(o =>
+    {
+        o.ShortSchemaNames = true;
+    });
 
 var app = builder.Build();
 
@@ -41,6 +44,4 @@ app.UseAppMiddleware();
 app.Run();
 
 // Make the implicit Program.cs class public, so integration tests can reference the correct assembly for host building
-public partial class Program
-{
-}
+public partial class Program { }

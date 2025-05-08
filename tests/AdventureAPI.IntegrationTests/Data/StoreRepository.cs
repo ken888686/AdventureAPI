@@ -4,8 +4,7 @@ using AdventureAPI.Infrastructure.Data;
 
 namespace AdventureAPI.IntegrationTests.Data;
 
-public class StoreRepository(BaseEfRepoTestFixture fixture)
-    : IClassFixture<BaseEfRepoTestFixture>
+public class StoreRepository(BaseEfRepoTestFixture fixture) : IClassFixture<BaseEfRepoTestFixture>
 {
     [Fact]
     public async Task AddStore_WithStoreName_CreatesNewStore()
