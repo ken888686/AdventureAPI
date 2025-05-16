@@ -5,13 +5,16 @@ namespace AdventureAPI.Web.Configurations;
 
 public static class ServiceConfigs
 {
-    public static IServiceCollection AddServiceConfigs(this IServiceCollection services,
+    public static IServiceCollection AddServiceConfigs(
+        this IServiceCollection services,
         ILogger logger,
-        WebApplicationBuilder builder)
+        WebApplicationBuilder builder
+    )
     {
         services
             .AddInfrastructureServices(builder.Configuration, logger)
-            .AddMediatrConfigs();
+            .AddMediatrConfigs()
+            .AddMemoryCache();
 
         logger.LogInformation("{Project} services registered", "Mediatr");
 

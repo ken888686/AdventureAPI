@@ -6,6 +6,4 @@ public class CityListResponse(
     IEnumerable<CityRecord> cities,
     int statusCode = StatusCodes.Status200OK,
     IEnumerable<string>? messages = null
-) : ApiResponse<IEnumerable<CityRecord>>(cities, statusCode, messages)
-{
-}
+) : ApiResponse<IEnumerable<CityRecord>>(cities, statusCode, messages) { }
